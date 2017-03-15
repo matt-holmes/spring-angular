@@ -26,6 +26,7 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.webjars:webjars-locator")
     compile("org.webjars:angularjs:1.6.2")
     compile("org.webjars:bootstrap:3.3.7")
