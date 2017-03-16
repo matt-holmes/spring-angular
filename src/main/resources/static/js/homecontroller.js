@@ -4,7 +4,6 @@ angular.module("app",[]).config(function ($httpProvider) {
         var self = this;
         self.refresh = function(){
             $http.get("/greeting").then(function(response){
-                console.log(response);
                 if(response.data) {
                     self.greeting = response.data;
                     self.hide = true;
