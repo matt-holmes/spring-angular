@@ -7,7 +7,22 @@
         <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     </head>
     <body ng-app="app" ng-controller="home as home">
-        <h1>Hello</h1>
+        <ul class="nav nav-pills" role="tablist">
+            <li class="active" ng-click="home.refresh()"><a href="">Home</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="" ng-click="home.logout()">Logout</a></li>
+        </ul>
+        <form ng-submit="home.login()" ng-hide="home.hide">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input text="text" class="form-control" id="content" name="content"
+                    ng-model="home.credentials.username"/>
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password"
+                    ng-model="home.credentials.password"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
         <div class="container">
             <p>ID: {{home.greeting.id}}</p>
             <p>Message: {{home.greeting.msg}}</p>
@@ -16,12 +31,13 @@
         <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
         <script type="text/javascript">
-            angular.module("app",[]).controller("home", function($http){
-                var self = this;
-                $http.get("/greeting").then(function(response){
-                    self.greeting = response.data;
-                });
-
+            angular.module("app",[]).config(function($httpProvider){
+                $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequst';
+                }).controller("home", function($http) {
+                    var self = this;
+                    $http.get("/greeting").then(function(response){
+                        self.greeting = response.data;
+                    });
             });
         </script>
     </body>
