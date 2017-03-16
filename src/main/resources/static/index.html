@@ -30,28 +30,6 @@
         <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
-        <script type="text/javascript">
-            angular.module("app",[]).config(function ($httpProvider) {
-                    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-                }).controller("home", function($http) {
-                    var self = this;
-                    $http.get("/greeting").then(function(response){
-                        self.greeting = response.data;
-                    });
-
-                    self.credentials = {};
-                    self.login = function () {
-                        $http.get('/greeting', {
-                            headers : { authorization : "Basic "
-                            + btoa(self.credentials.username
-                                + ":" + self.credentials.password)
-                            }}).then( function (response) {
-                                self.greeting = response.data;
-                                self.hide = true ;
-                        })
-                    };
-            });
-
-        </script>
+        <script type="text/javascript" src="/js/homecontroller.js"></script>
     </body>
 </html>
