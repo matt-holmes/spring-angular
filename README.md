@@ -11,7 +11,7 @@
 2. vagrant ssh
 3. cd /vagrant
 4. git clone https://github.com/matt-holmes/spring-angular.git
-5. cd sprint-angular
+5. cd spring-angular
 6. gradle bootRun
 
 
