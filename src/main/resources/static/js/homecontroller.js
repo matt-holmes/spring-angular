@@ -7,6 +7,8 @@ angular.module("app",[]).config(function ($httpProvider) {
                 if(response.data) {
                     self.greeting = response.data;
                     self.hide = true;
+                } else {
+                    self.hide = false;
                 }
             });
         };
